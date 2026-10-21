@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ace's personal web development portfolio.">
-    <title>Ace | Web Developer Portfolio</title>
+    <meta name="description"
+        content="Ace's web development portfolio showcasing HTML, CSS, JavaScript, and practical projects.">
+    <meta name="theme-color" content="#0f172a">
+    <title>Ace | Junior Web Developer</title>
 
     <style>
         :root {
@@ -25,7 +27,7 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.7;
@@ -40,6 +42,12 @@
             font: inherit;
         }
 
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--cyan);
+            outline-offset: 4px;
+        }
+
         .container {
             width: min(1100px, 90%);
             margin: auto;
@@ -49,7 +57,7 @@
             position: sticky;
             top: 0;
             z-index: 10;
-            background: rgba(15, 23, 42, 0.95);
+            background: rgba(15, 23, 42, 0.96);
             border-bottom: 1px solid var(--border);
             backdrop-filter: blur(10px);
         }
@@ -81,11 +89,11 @@
 
         section {
             padding: 80px 0;
-            scroll-margin-top: 72px;
+            scroll-margin-top: 85px;
         }
 
         .hero {
-            min-height: 75vh;
+            min-height: 76vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -95,14 +103,15 @@
         .eyebrow {
             color: var(--cyan);
             font-weight: bold;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
+            font-size: 0.9rem;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 7vw, 4.8rem);
+            font-size: clamp(2.8rem, 7vw, 5rem);
             line-height: 1.15;
-            margin: 15px 0;
+            margin: 16px 0;
         }
 
         .hero h2 {
@@ -114,9 +123,8 @@
             color: var(--cyan);
         }
 
-        .hero p,
-        .section-description {
-            max-width: 650px;
+        .hero p:not(.eyebrow) {
+            max-width: 680px;
             color: var(--muted);
             margin-top: 18px;
         }
@@ -152,7 +160,7 @@
 
         .btn-outline:hover {
             background: var(--cyan);
-            color: #0f172a;
+            color: var(--bg);
         }
 
         .section-title {
@@ -170,6 +178,12 @@
             border-radius: 5px;
         }
 
+        .section-description {
+            max-width: 700px;
+            color: var(--muted);
+            margin-top: 15px;
+        }
+
         .about-box,
         .skill-card,
         .project-card,
@@ -184,14 +198,19 @@
             margin-top: 25px;
         }
 
+        .about-box p+p {
+            margin-top: 14px;
+        }
+
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
             gap: 18px;
             margin-top: 28px;
         }
 
-        .skill-card {
+        .skill-card,
+        .project-card {
             transition: transform 0.2s, border-color 0.2s;
         }
 
@@ -205,6 +224,11 @@
         .project-card h3 {
             color: var(--cyan);
             margin-bottom: 8px;
+        }
+
+        .skill-card p,
+        .project-card p {
+            color: var(--muted);
         }
 
         .project-filters {
@@ -239,11 +263,11 @@
         }
 
         .project-card {
-            transition: transform 0.2s, border-color 0.2s;
+            border-radius: 14px;
         }
 
-        .project-card p {
-            color: var(--muted);
+        .project-card[hidden] {
+            display: none;
         }
 
         .tags {
@@ -261,18 +285,12 @@
             border-radius: 5px;
         }
 
-        .project-card[hidden] {
-            display: none;
-        }
-
         .contact-box {
             margin-top: 25px;
         }
 
-        #greeting-message {
-            color: var(--cyan);
-            margin-top: 15px;
-            min-height: 28px;
+        .contact-box p {
+            color: var(--muted);
         }
 
         footer {
@@ -302,6 +320,16 @@
                 min-height: 65vh;
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition: none !important;
+            }
+        }
     </style>
 </head>
 
@@ -322,102 +350,114 @@
     </header>
 
     <main>
+
+        <!-- HOME -->
         <section id="home">
             <div class="container hero">
-                <p class="eyebrow">Welcome to my portfolio</p>
+                <p class="eyebrow">
+                    Aspiring Web Developer | Open to Opportunities
+                </p>
 
-                <h1>Hello, I'm <span class="accent">Ace</span>.</h1>
+                <h1>Hi, I'm <span class="accent">Ace</span>.</h1>
 
-                <h2>Aspiring Web Developer</h2>
+                <h2>I build websites and bring ideas to life.</h2>
 
                 <p>
-                    I'm learning how to build modern, responsive websites
-                    using HTML, CSS, and JavaScript. This is where I share
-                    my learning journey and projects.
+                    I'm an aspiring web developer learning to create
+                    responsive, user-friendly websites with HTML, CSS,
+                    and JavaScript. I'm building practical projects,
+                    improving my coding skills, and looking for an
+                    opportunity to grow as a developer.
                 </p>
 
                 <div class="button-row">
-                    <a href="#projects" class="btn">Explore My Projects</a>
-                    <button class="btn btn-outline" id="hello-button">
-                        Say Hello
-                    </button>
+                    <a href="#projects" class="btn">View My Projects</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
                 </div>
-
-                <p id="hello-message" aria-live="polite"></p>
             </div>
         </section>
 
+        <!-- ABOUT -->
         <section id="about">
             <div class="container">
                 <h2 class="section-title">About Me</h2>
 
                 <p class="section-description">
-                    A little about who I am and what I'm working toward.
+                    My journey into web development.
                 </p>
 
                 <div class="about-box">
                     <p>
-                        I'm an aspiring web developer who enjoys learning
-                        technology and solving problems. I'm currently
-                        developing my skills one project at a time.
+                        I'm Ace, an aspiring web developer focused on
+                        learning how to build useful and attractive websites.
+                        I enjoy solving problems, learning new technologies,
+                        and turning ideas into working web pages.
                     </p>
-                    <p style="margin-top: 14px;">
-                        My goal is to become confident in building useful,
-                        attractive, and accessible websites.
+
+                    <p>
+                        I'm currently strengthening my skills in HTML,
+                        CSS, JavaScript, responsive design, and GitHub.
+                        My goal is to gain practical experience, contribute
+                        to real projects, and grow into a professional
+                        web developer.
                     </p>
                 </div>
             </div>
         </section>
 
+        <!-- SKILLS -->
         <section id="skills">
             <div class="container">
-                <h2 class="section-title">My Skills</h2>
+                <h2 class="section-title">Technical Skills</h2>
 
                 <p class="section-description">
-                    The technologies I'm learning and practising.
+                    Technologies I'm learning and applying in my projects.
                 </p>
 
                 <div class="skills-grid">
                     <article class="skill-card">
-                        <h3>HTML</h3>
-                        <p>Building the structure and content of web pages.</p>
+                        <h3>HTML5</h3>
+                        <p>Structuring web pages with semantic HTML.</p>
                     </article>
 
                     <article class="skill-card">
-                        <h3>CSS</h3>
-                        <p>Styling pages with layouts, colours, and effects.</p>
+                        <h3>CSS3</h3>
+                        <p>Styling layouts, colours, and responsive designs.</p>
                     </article>
 
                     <article class="skill-card">
                         <h3>JavaScript</h3>
-                        <p>Adding interactions and dynamic behaviour.</p>
+                        <p>Adding interactive features to web pages.</p>
                     </article>
 
                     <article class="skill-card">
-                        <h3>Responsive Design</h3>
-                        <p>Making websites work on phones and computers.</p>
+                        <h3>Git &amp; GitHub</h3>
+                        <p>Learning version control and publishing websites.</p>
                     </article>
                 </div>
             </div>
         </section>
 
+        <!-- PROJECTS -->
         <section id="projects">
             <div class="container">
                 <h2 class="section-title">My Projects</h2>
 
                 <p class="section-description">
-                    Here are some example projects. I'll replace these
-                    with my own real projects as I build them.
+                    Practice projects from my web development learning journey.
+                    I'll keep adding real projects as I build them.
                 </p>
 
                 <div class="project-filters" aria-label="Filter projects">
-                    <button class="filter-button active" data-filter="all" aria-pressed="true">All</button>
+                    <button class="filter-button active" type="button" data-filter="all"
+                        aria-pressed="true">All</button>
 
-                    <button class="filter-button" data-filter="html" aria-pressed="false">HTML</button>
+                    <button class="filter-button" type="button" data-filter="html" aria-pressed="false">HTML</button>
 
-                    <button class="filter-button" data-filter="css" aria-pressed="false">CSS</button>
+                    <button class="filter-button" type="button" data-filter="css" aria-pressed="false">CSS</button>
 
-                    <button class="filter-button" data-filter="javascript" aria-pressed="false">JavaScript</button>
+                    <button class="filter-button" type="button" data-filter="javascript"
+                        aria-pressed="false">JavaScript</button>
                 </div>
 
                 <div class="projects-grid">
@@ -437,7 +477,7 @@
                         <h3>Styled Portfolio</h3>
                         <p>
                             A dark-themed portfolio with responsive layouts,
-                            cards, colours, and hover effects.
+                            colours, and hover effects.
                         </p>
                         <div class="tags">
                             <span class="tag">HTML</span>
@@ -448,7 +488,7 @@
                     <article class="project-card" data-category="javascript">
                         <h3>Interactive Buttons</h3>
                         <p>
-                            A small project that uses JavaScript to respond
+                            A small project using JavaScript to respond
                             when visitors click buttons.
                         </p>
                         <div class="tags">
@@ -460,7 +500,7 @@
                     <article class="project-card" data-category="javascript">
                         <h3>Project Filter</h3>
                         <p>
-                            A project gallery where visitors can filter
+                            An interactive gallery that filters project
                             cards by technology.
                         </p>
                         <div class="tags">
@@ -473,33 +513,52 @@
             </div>
         </section>
 
+        <!-- CONTACT -->
         <section id="contact">
             <div class="container">
-                <h2 class="section-title">Contact Me</h2>
+                <h2 class="section-title">Let's Connect</h2>
 
                 <p class="section-description">
-                    Interested in my work or want to connect? Try the
-                    button below.
+                    I'm interested in junior web development opportunities,
+                    internships, collaborations, and projects that help me grow.
                 </p>
 
                 <div class="contact-box">
                     <p>
-                        I'm always learning and looking for opportunities
-                        to improve my web development skills.
+                        Have an opportunity or a project idea?
+                        I'd be happy to hear from you.
                     </p>
 
                     <div class="button-row">
-                        <button class="btn" id="greeting-button">
-                            Send a Greeting
-                        </button>
-                    </div>
 
-                    <p id="greeting-message" aria-live="polite"></p>
+                        <a class="btn"
+                            href="mailto:machariadennis2006@gmail.com?subject=Web%20Development%20Opportunity">
+                            Email Me
+                        </a>
+
+                        <a class="btn btn-outline" href="tel:+25474867435">
+                            Call Me
+                        </a>
+
+                        <a class="btn btn-outline"
+                            href="https://wa.me/25474867435?text=Hello%20Ace%2C%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20web%20development%20opportunity."
+                            target="_blank" rel="noopener noreferrer">
+                            WhatsApp Me
+                        </a>
+
+                        <a class="btn btn-outline" href="https://github.com/denvy035-del" target="_blank"
+                            rel="noopener noreferrer">
+                            My GitHub
+                        </a>
+
+                    </div>
                 </div>
             </div>
         </section>
+
     </main>
 
+    <!-- FOOTER -->
     <footer>
         <div class="container">
             <p>
@@ -510,26 +569,15 @@
     </footer>
 
     <script>
-        // Update the copyright year automatically.
+        // Automatically update the copyright year.
         document.getElementById("year").textContent =
             new Date().getFullYear();
 
-        // Hero greeting button.
-        document.getElementById("hello-button").addEventListener("click", () => {
-            document.getElementById("hello-message").textContent =
-                "Hello! Thanks for visiting my portfolio.";
-        });
-
-        // Contact greeting button.
-        document.getElementById("greeting-button").addEventListener("click", () => {
-            document.getElementById("greeting-message").textContent =
-                "Thanks for stopping by! Have a great day.";
-        });
-
-        // Project filters.
+        // Get the project filter buttons and project cards.
         const filterButtons = document.querySelectorAll(".filter-button");
         const projectCards = document.querySelectorAll(".project-card");
 
+        // Filter projects when a visitor clicks a button.
         filterButtons.forEach((button) => {
             button.addEventListener("click", () => {
                 const selectedFilter = button.dataset.filter;
@@ -537,11 +585,12 @@
                 // Highlight the selected filter.
                 filterButtons.forEach((item) => {
                     const isActive = item === button;
+
                     item.classList.toggle("active", isActive);
                     item.setAttribute("aria-pressed", String(isActive));
                 });
 
-                // Show matching projects.
+                // Show only projects matching the category.
                 projectCards.forEach((card) => {
                     const matches =
                         selectedFilter === "all" ||
